@@ -1,0 +1,272 @@
+/* BIBLIOTECAS USADAS */
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
+
+/* DECLARAÇÃO DAS FUNÇÕOES ANTES */
+void exercicio01();
+void exercicio02();
+void exercicio03();
+void exercicio04();
+void exercicio05();
+void exercicio06();
+void exercicio07();
+void exercicio08();
+void exercicio09();
+void exercicio10();
+void exercicio11();
+void exercicio12();
+void exercicio13();
+void exercicio14();
+
+/* Função que lê inteiros */
+int leInteiro(char frase[]){
+    int n; //define a variável
+    printf("\n Insira %s: ", frase); //pergunta o usuário para inserir no teclado um número inteiro
+    scanf("%d", &n); //lê o número inteiro
+    return n; //retorna
+}
+/* Função que lê real */
+float leReal(char frase[]){
+    float x;
+    printf("\nInsira %s: ", frase);
+    scanf("%f", &x);
+    return x;
+}
+/* Função que lê char */
+char leChar(char frase[]){
+    char carac;
+    printf("\n Insira %s: ", frase);
+    scanf(" %c", &carac);
+    return carac;
+}
+
+
+
+/* Função que calcula o n-ésimo número par */
+double parImpar(int n, int parI){
+    for(int i = 0; i < n; i++) parI += 2; //repete até chegar no n-ésimo nº par (soma)
+    return parI; //retorna a resposta
+}
+/**/
+double divisao(int n, double dividendo, double divisor){
+    return (dividendo / divisor); 
+}
+/**/
+double multiDiv(int n, int x, double divisor){
+    return divisao(n, parImpar(n,0), divisor) * pow(x, n); 
+    }
+/**/
+double fatorial(int n){
+    double resp = 1;
+    for(int i = 0; i < n; i++) resp = resp * i;
+    return resp;
+}
+
+
+/* FUNÇÕES NÃO REPETIDAS */
+/*Função que escreve a sequência de pares na ordem decrescente */
+void ParesEmOrdemDecrescente(int n){
+    int controle = (n - 1.0) / 2.0; //flag de controle 
+    for(int i = controle; i >= 0; i--) printf("%.lf\t", parImpar(i, 0));
+}
+/* */
+double somaUmSobreImpar(int n){
+    double soma, somaD = 0, somaS = 1, divS;
+    for(int i = 0; i < n; i++){
+        divS = parImpar(i, 3);
+        printf("\n %.lf / %.lf + 1 / %.lf = ", somaD, somaS, divS);
+        somaD = (somaD * divS) + somaS;
+        somaS *= divS;
+        printf("%.lf / %.lf", somaD, somaS);
+    }
+    soma = somaD/somaS;
+    return soma;
+}
+/**/
+double somatorioDivisao(int n){
+    double soma;
+    for(int i = 0; i < n; i++) soma = soma + divisao(n, parImpar(n,0), parImpar(n,1));
+    return soma;
+}
+/**/
+double produtoMultiDiv(int n, int x){
+    double produto = 1;
+    for(int i = n; i > 0; i--) produto = produto * multiDiv(i, x, parImpar(n,1));
+    return produto;
+}
+
+
+
+/* FUNÇÃO PRINCIPAL (vai chamar as funções da lista) */ 
+int main(){
+    char continuar;
+    do{
+        int i = leInteiro("o numero da questao desejada");
+        printf("\n ****************************************\n");
+        switch (i){
+            case 1:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio01();
+                break;
+            case 2:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio02();
+                break;
+            case 3:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio03();
+                break;
+            case 4:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio04();
+                break;
+            case 5:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio05();
+                break;
+            case 6:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio06();
+                break;
+            case 7:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio07();
+                break;
+            case 8:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio08();
+                break;
+            case 9:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio09();
+                break;
+            case 10:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio10();
+                break;
+            case 11:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio11();
+                break;
+            case 12:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio12();
+                break;
+            case 13:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio13();
+                break;
+            case 14:
+                printf("\n\t QUESTAO %.2d", i);
+                exercicio14();
+                break;
+            default:
+                printf("\n Felizmente nao existe essa questao :)\n");
+                break;
+        }
+        printf("\n ****************************************\n");
+        continuar = leChar("'s' se quiser continuar ou 'n' se quiser encerrar");
+    }while(continuar == 's' || continuar == 'S');
+    return 0;
+}
+
+
+
+/* OS PROCEDIMENTOS SERÃO COLOCADOS ABAIXO DO INT MAIN PARA HAVER UMA MELHOR LEITURA DO ALGORITMO */
+/* QUESTÃO 01 */
+void exercicio01(){
+    int n = leInteiro("o termo desejado"); //chama a função que lê inteiros
+    printf("\n O %do numero par e: %.lf\n", n, parImpar(n, 0)); //imprime a resposta
+}
+/* QUESTÃO 02 */
+void exercicio02(){
+    int n = leInteiro("o valor da flag");
+    ParesEmOrdemDecrescente(n);
+}
+/* QUESTÃO 03 */
+void exercicio03(){
+    int n = leInteiro("o valor da flag");
+    printf("\n O %do termo na sequencia de fracoes impares e: 1 / %.lf\n", n, parImpar(n, 1));
+}
+/* QUESTÃO 04 */
+void exercicio04(){
+    int n = leInteiro("o valor da flag");
+    printf("\n O somatorio dos primeiros %d numeros da divisao por impares e: %lf\n", n, somaUmSobreImpar(n));
+}
+/* QUESTÃO 05 */
+void exercicio05(){
+    int n = leInteiro("o valor da flag");
+    printf("\n O valor do somatorio e: %lf", divisao(n, parImpar(n,0), parImpar(n,1)));
+}
+/* QUESTÃO 06 */
+void exercicio06(){
+    int n = leInteiro("um numero inteiro");
+    float x = leReal("um numero real");
+    printf("\nO %do termo da sequencia e: %lf",n , multiDiv(n, x,parImpar(n,1)));
+}
+/* QUESTÃO 07 */
+void exercicio07(){
+    int n = leInteiro("um numero inteiro");
+    float x = leReal("um numero real");
+    printf("\nO produto dos %d primeiros termos da sequencia e: %lf",n, produtoMultiDiv(n, x));
+}
+/* QUESTÃO 08 */
+void exercicio08(){
+    int n = leInteiro("o numero que sera fatoriado");
+    printf("\n O fatorial de %d e: %lf", n, fatorial(n));
+}
+/* QUESTÃO 09 */
+void exercicio09(){
+/*
+Fazer uma função que recebe um número inteiro n, um número real x e retorna o n-ésimo termo
+da sequência abaixo. Utilize os funçãos desenvolvidos anteriormente. Além disso, você deve
+fazer um procedimento exercicio09() para ler o valor de n e chamar a função desenvolvido nesta
+questão.
+*/
+    int n = leInteiro("um numero inteiro");
+    float x = leReal("um numero real");
+    printf("\n O %do termo da sequencia e: %lf", n, multiDiv(n, x, fatorial(n)));
+
+}
+/* QUESTÃO 10 */
+void exercicio10(){
+/*
+Fazer uma função que recebe um número inteiro n, um número real x e retorna o somatório dos
+n primeiros termos da sequência mostrada na questão anterior. Além disso, você deve fazer um
+procedimento exercicioXX() para chamar a função desenvolvido nesta questão.
+*/
+}
+/* QUESTÃO 11 */
+void exercicio11(){
+/*
+Refazer a função da questão anterior, omitindo todos termos cujos valores no denominador sejam
+múltiplos de 2. Além disso, você deve fazer um procedimento exercicioXX() para chamar a função
+desenvolvido nesta questão.
+*/
+}
+/* QUESTÃO 12 */
+void exercicio12(){
+/*
+Fazer uma função que recebe um número inteiro n e imprima os n primeiros múltiplos de 5. Além
+disso, você deve fazer um procedimento exercicioXX() para chamar a função desenvolvido nesta
+questão.
+*/
+}
+/* QUESTÃO 13 */
+void exercicio13(){
+/*
+Fazer uma função que recebe um número inteiro n e retorna o n-ésimo termo da sequência de
+Fibonacci. Além disso, você deve fazer um procedimento exercicioXX() para chamar a função
+desenvolvido nesta questão.
+*/
+}
+/* QUESTÃO 14 */
+void exercicio14(){
+/*
+Fazer uma função que recebe um número inteiro n e retorna o maior elemento da sequência de
+Fibonacci que seja menor que n. Além disso, você deve fazer um procedimento exercicioXX()
+para chamar a função desenvolvido nesta questão.
+*/
+}

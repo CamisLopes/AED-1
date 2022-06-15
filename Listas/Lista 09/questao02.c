@@ -1,0 +1,3 @@
+/*
+Escreva um programa em C para contar a quantidade de palavras de um arquivo texto.
+*/
